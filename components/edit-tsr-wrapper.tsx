@@ -36,9 +36,12 @@ export function EditTsrWrapper({ post }: EditTsrWrapperProps) {
         setIsEditOpen(false);
         router.refresh();
       } else {
+        const errorMessage = typeof result.error === 'string' 
+          ? result.error 
+          : 'Failed to update TSR';
         toast({
           title: 'Error',
-          description: result.error || 'Failed to update TSR',
+          description: errorMessage,
           variant: 'destructive',
         });
       }
